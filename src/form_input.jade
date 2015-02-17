@@ -1,0 +1,6 @@
+- for(var j=0; j<5; j++)
+  li.btn
+    - if(j == 0)
+      input(type="radio", name="position", value="#{j}" checked)
+    - else
+      input(type="radio", name="position", value="#{j}")

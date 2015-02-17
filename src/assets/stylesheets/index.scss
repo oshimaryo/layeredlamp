@@ -1,0 +1,78 @@
+#index {
+  margin: 0;
+  .pattern {
+    width: 1200px;
+    margin: 40px;
+    .title {
+      width: 400px;
+      font-size: 14px;
+    }
+    .scenes {
+      list-style: none;
+      width: 100%;
+      margin : 0;
+      padding: 0;
+      list-style: none;
+    }
+    .scene {
+      margin-bottom: 60px;
+      width: 100%;
+      .left {
+        display: inline-block;
+        vertical-align: bottom;
+        margin-bottom: -50px;
+        width: 250px;
+        height: auto;
+        .status {
+          max-width: 200px;
+        }
+      }
+      .right {
+        display: inline-block;
+        margin : 0;
+        padding: 0;
+        width: calc(100% - 260px);
+        ul {
+          width: 100%;
+          margin : 0;
+          padding: 0;
+          list-style: none;
+          li {
+            display: inline-block;
+            width: 18%;
+            height: 50px;
+            margin : 0;
+            padding: 0;
+            text-align: center;
+          }
+        }
+        .btn {
+          margin: 0;
+          margin-bottom: 5px;
+          padding: 0;
+          padding-top: 12px;
+          border-radius: 10px;
+          &.checked {
+            background: #2B88FF;
+          }
+        }
+        .submit {
+          display: none;
+        }
+      }
+    }
+    .add-btn {
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+      background: gray;
+    }
+  }
+  .template {
+    display: none;
+  }
+
+}

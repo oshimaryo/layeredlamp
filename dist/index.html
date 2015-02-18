@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"><meta name="viewport" content="width=1280px" />
     <link rel="stylesheet" href="assets/stylesheets/index.css">
-    <script src="/assets/scripts/all.min.js"></script>
-    <script src="/assets/scripts/index.js"></script>
+    <script src="assets/scripts/all.min.js"></script>
+    <script src="assets/scripts/index.js"></script>
     <title>Edit Patterns</title>
   </head>
   <body id="index">
     <div class="container pattern">
-      <input type="text" name="title" placeholder="title" class="title">
+      <h1 class="editor">Pattern Editor</h1>
       <ul class="scenes">
         <li class="scene">
           <div class="left"><img src="assets/images/pattern.png" class="status">
+            <h1 class="label">duration</h1>
           </div>
           <div class="right">
             <ul class="icons">
@@ -22,113 +23,120 @@
               <li class="icon"><img src="assets/images/icon_3.png"></li>
               <li class="icon"><img src="assets/images/icon_4.png"></li>
             </ul>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-0">
+            <form action="http://www.example.com/patterns/0/scenes/0/" method="post" class="scene-form">
+              <ul class="layer layer-0">
                 <li class="btn checked">
-                  <input type="radio" name="position_0" value="0" checked class="position">
+                  <input type="radio" name="l_0" value="0" checked class="position">
                 </li>
                 <li class="btn">
-                  <input type="radio" name="position_0" value="1" class="position">
+                  <input type="radio" name="l_0" value="1" class="position">
                 </li>
                 <li class="btn">
-                  <input type="radio" name="position_0" value="2" class="position">
+                  <input type="radio" name="l_0" value="2" class="position">
                 </li>
                 <li class="btn">
-                  <input type="radio" name="position_0" value="3" class="position">
+                  <input type="radio" name="l_0" value="3" class="position">
                 </li>
                 <li class="btn">
-                  <input type="radio" name="position_0" value="4" class="position">
+                  <input type="radio" name="l_0" value="4" class="position">
+                </li>
+              </ul>
+              <ul class="layer layer-1">
+                <li class="btn checked">
+                  <input type="radio" name="l_1" value="0" checked class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_1" value="1" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_1" value="2" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_1" value="3" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_1" value="4" class="position">
+                </li>
+              </ul>
+              <ul class="layer layer-2">
+                <li class="btn checked">
+                  <input type="radio" name="l_2" value="0" checked class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_2" value="1" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_2" value="2" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_2" value="3" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_2" value="4" class="position">
+                </li>
+              </ul>
+              <ul class="layer layer-3">
+                <li class="btn checked">
+                  <input type="radio" name="l_3" value="0" checked class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_3" value="1" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_3" value="2" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_3" value="3" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_3" value="4" class="position">
+                </li>
+              </ul>
+              <ul class="layer layer-4">
+                <li class="btn checked">
+                  <input type="radio" name="l_4" value="0" checked class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_4" value="1" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_4" value="2" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_4" value="3" class="position">
+                </li>
+                <li class="btn">
+                  <input type="radio" name="l_4" value="4" class="position">
                 </li>
               </ul>
               <input type="submit" class="submit">
             </form>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-1">
-                <li class="btn checked">
-                  <input type="radio" name="position_1" value="0" checked class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_1" value="1" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_1" value="2" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_1" value="3" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_1" value="4" class="position">
-                </li>
-              </ul>
-              <input type="submit" class="submit">
-            </form>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-2">
-                <li class="btn checked">
-                  <input type="radio" name="position_2" value="0" checked class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_2" value="1" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_2" value="2" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_2" value="3" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_2" value="4" class="position">
-                </li>
-              </ul>
-              <input type="submit" class="submit">
-            </form>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-3">
-                <li class="btn checked">
-                  <input type="radio" name="position_3" value="0" checked class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_3" value="1" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_3" value="2" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_3" value="3" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_3" value="4" class="position">
-                </li>
-              </ul>
-              <input type="submit" class="submit">
-            </form>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-4">
-                <li class="btn checked">
-                  <input type="radio" name="position_4" value="0" checked class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_4" value="1" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_4" value="2" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_4" value="3" class="position">
-                </li>
-                <li class="btn">
-                  <input type="radio" name="position_4" value="4" class="position">
-                </li>
-              </ul>
-              <input type="submit" class="submit">
-            </form>
+            <ul class="durations durations_0">
+              <li class="duration checked">
+                <p class="val">30</p>
+              </li>
+              <li class="duration">
+                <p class="val">50</p>
+              </li>
+              <li class="duration">
+                <p class="val">70</p>
+              </li>
+              <li class="duration">
+                <p class="val">90</p>
+              </li>
+              <li class="duration">
+                <p class="val">110</p>
+              </li>
+            </ul>
           </div>
         </li>
       </ul>
-      <div class="add-btn">add</div>
+      <div class="add-btn">add scene</div>
+      <div class="play-btn">play pattern</div>
       <div class="template">
         <div class="scene">
           <div class="left"><img src="assets/images/pattern.png" class="status">
+            <h1 class="label">duration</h1>
           </div>
           <div class="right">
             <ul class="icons">
@@ -138,8 +146,8 @@
               <li class="icon"><img src="assets/images/icon_3.png"></li>
               <li class="icon"><img src="assets/images/icon_4.png"></li>
             </ul>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-0">
+            <form action="http://www.example.com/patterns/0/scenes/" method="post">
+              <ul class="layer layer-0">
                 <li class="btn checked">
                   <input type="radio" name="position_0" value="0" checked class="position">
                 </li>
@@ -156,10 +164,7 @@
                   <input type="radio" name="position_0" value="4" class="position">
                 </li>
               </ul>
-              <input type="submit" class="submit">
-            </form>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-1">
+              <ul class="layer layer-1">
                 <li class="btn checked">
                   <input type="radio" name="position_1" value="0" checked class="position">
                 </li>
@@ -176,10 +181,7 @@
                   <input type="radio" name="position_1" value="4" class="position">
                 </li>
               </ul>
-              <input type="submit" class="submit">
-            </form>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-2">
+              <ul class="layer layer-2">
                 <li class="btn checked">
                   <input type="radio" name="position_2" value="0" checked class="position">
                 </li>
@@ -196,10 +198,7 @@
                   <input type="radio" name="position_2" value="4" class="position">
                 </li>
               </ul>
-              <input type="submit" class="submit">
-            </form>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-3">
+              <ul class="layer layer-3">
                 <li class="btn checked">
                   <input type="radio" name="position_3" value="0" checked class="position">
                 </li>
@@ -216,10 +215,7 @@
                   <input type="radio" name="position_3" value="4" class="position">
                 </li>
               </ul>
-              <input type="submit" class="submit">
-            </form>
-            <form action="/some_url_here" method="post">
-              <ul class="layer, layer-4">
+              <ul class="layer layer-4">
                 <li class="btn checked">
                   <input type="radio" name="position_4" value="0" checked class="position">
                 </li>
@@ -238,6 +234,23 @@
               </ul>
               <input type="submit" class="submit">
             </form>
+            <ul class="durations">
+              <li class="duration checked">
+                <p class="val">30</p>
+              </li>
+              <li class="duration">
+                <p class="val">50</p>
+              </li>
+              <li class="duration">
+                <p class="val">70</p>
+              </li>
+              <li class="duration">
+                <p class="val">90</p>
+              </li>
+              <li class="duration">
+                <p class="val">110</p>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

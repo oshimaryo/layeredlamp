@@ -2,66 +2,90 @@ doctype html
 html(lang="ja")
   head
     meta(charset="utf-8")
+    <meta name="viewport" content="width=1280px" />
     link(rel='stylesheet', href="assets/stylesheets/index.css")
-    script(src='/assets/scripts/all.min.js')
-    script(src='/assets/scripts/index.js')
+    script(src='assets/scripts/all.min.js')
+    script(src='assets/scripts/index.js')
     title Edit Patterns
   body#index
     .container.pattern
-      input.title(
-        type='text'
-        name='title'
-        placeholder='title'
-      )
+      h1.editor Pattern Editor
+         
+      //- input.title(
+      //-   type='text'
+      //-   name='title'
+      //-   placeholder='title'
+      //- )
     
       ul.scenes
         li.scene
           .left
             //- TODO: change form interactively
             img.status(src="assets/images/pattern.png")/
+            h1.label duration
           .right
             ul.icons
               - for(var i=0; i<5; i++)
                 li.icon
                   img(src="assets/images/icon_#{i}.png")/
+            //- - url = "http://www.example.com/patterns/0/scenes/0?l_0=1&?l_1=2&?l_2=0&?l_3=2&?l_4=4"
+            - url = "http://www.example.com/patterns/0/scenes/0/"
+            form(action="#{url}", method="post", class="scene-form")
+              - for(var i=0; i<5; i++)
+                  ul(class="layer layer-#{i}")
+                    - for(var j=0; j<5; j++)
+                      - if(j == 0)
+                        li.btn.checked
+                          input(type="radio", name="l_#{i}", value="#{j}" class="position" checked)
+                      - else
+                        li.btn
+                          input(type="radio", name="l_#{i}", value="#{j}" class="position")
+              input(type="submit" class="submit")
             
-            - for(var i=0; i<5; i++)
-              - make_url = "/some_url_here"
-              form(action="#{make_url}", method="post")
-                ul(class="layer, layer-#{i}")
-                  - for(var j=0; j<5; j++)
-                    - if(j == 0)
-                      li.btn.checked
-                        input(type="radio", name="position_#{i}", value="#{j}" class="position" checked)
-                    - else
-                      li.btn
-                        input(type="radio", name="position_#{i}", value="#{j}" class="position")
-                input(type="submit" class="submit")
-                  
-      .add-btn add
-        
+            ul.durations.durations_0
+              - for(var i=0; i<5; i++)
+                - if(i==0)
+                  li.duration.checked
+                    p.val 30
+                - else
+                  li.duration
+                    - val = 30 + i * 20 
+                    p.val #{val}
+                    
+      .add-btn add scene
+      .play-btn play pattern
+
       .template
         .scene
           .left
             //- TODO: change form interactively
             img.status(src="assets/images/pattern.png")/
+            h1.label duration
           .right
             ul.icons
               - for(var i=0; i<5; i++)
                 li.icon
                   img(src="assets/images/icon_#{i}.png")/
+            - url = "http://www.example.com/patterns/0/scenes/"
+            form(action="#{url}", method="post")
+              - for(var i=0; i<5; i++)
+                  ul(class="layer layer-#{i}")
+                    - for(var j=0; j<5; j++)
+                      - if(j == 0)
+                        li.btn.checked
+                          input(type="radio", name="position_#{i}", value="#{j}" class="position" checked)
+                      - else
+                        li.btn
+                          input(type="radio", name="position_#{i}", value="#{j}" class="position")
+              input(type="submit" class="submit")
             
-            - for(var i=0; i<5; i++)
-              - make_url = "/some_url_here"
-              form(action="#{make_url}", method="post")
-                ul(class="layer, layer-#{i}")
-                  - for(var j=0; j<5; j++)
-                    - if(j == 0)
-                      li.btn.checked
-                        input(type="radio", name="position_#{i}", value="#{j}" class="position" checked)
-                    - else
-                      li.btn
-                        input(type="radio", name="position_#{i}", value="#{j}" class="position")
-                input(type="submit" class="submit")
-      
+            ul.durations
+              - for(var i=0; i<5; i++)
+                - if(i==0)
+                  li.duration.checked
+                    p.val 30
+                - else
+                  li.duration
+                    - val = 30 + i * 20 
+                    p.val #{val}
       

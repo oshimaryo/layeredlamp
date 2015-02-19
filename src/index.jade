@@ -24,21 +24,16 @@ html(lang="ja")
             img.status(src="assets/images/pattern.png")/
             h1.label duration
           .right
-            ul.icons
-              - for(var i=0; i<5; i++)
-                li.icon
-                  img(src="assets/images/icon_#{i}.png")/
-            //- - url = "http://www.example.com/patterns/0/scenes/0?l_0=1&?l_1=2&?l_2=0&?l_3=2&?l_4=4"
             - url = "http://www.example.com/patterns/0/scenes/0/"
             form(action="#{url}", method="post", class="scene-form")
               - for(var i=0; i<5; i++)
                   ul(class="layer layer-#{i}")
                     - for(var j=0; j<5; j++)
                       - if(j == 0)
-                        li.btn.checked
+                        li(class="btn btn_#{j} checked")
                           input(type="radio", name="l_#{i}", value="#{j}" class="position" checked)
                       - else
-                        li.btn
+                        li(class="btn btn_#{j}")
                           input(type="radio", name="l_#{i}", value="#{j}" class="position")
               input(type="submit" class="submit")
             
@@ -62,20 +57,16 @@ html(lang="ja")
             img.status(src="assets/images/pattern.png")/
             h1.label duration
           .right
-            ul.icons
-              - for(var i=0; i<5; i++)
-                li.icon
-                  img(src="assets/images/icon_#{i}.png")/
             - url = "http://www.example.com/patterns/0/scenes/"
             form(action="#{url}", method="post")
               - for(var i=0; i<5; i++)
                   ul(class="layer layer-#{i}")
                     - for(var j=0; j<5; j++)
                       - if(j == 0)
-                        li.btn.checked
+                        li(class="btn btn_#{j} checked")
                           input(type="radio", name="position_#{i}", value="#{j}" class="position" checked)
                       - else
-                        li.btn
+                        li(class="btn btn_#{j}")
                           input(type="radio", name="position_#{i}", value="#{j}" class="position")
               input(type="submit" class="submit")
             

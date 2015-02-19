@@ -124,6 +124,16 @@
       font-weight: 70;
       color: black;
       background: white;
+      &:after {
+        content: "Play Pattern";
+      }
+      &.is-playing {
+        color: white;
+        background: black;
+        &:after {
+          content: "Stop";
+        }
+      }
     }
   }
   .template {

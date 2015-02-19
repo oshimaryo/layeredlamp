@@ -1,4 +1,5 @@
 base_url =　"http://www.example.com/patterns/0/scenes/"
+timers = []
 
 $ ->
   $(document).on "click touch", ".btn", (event) ->
@@ -21,6 +22,7 @@ $ ->
       $(target_radio).attr "checked", "checked"
       event.preventDefault()
       submit_btn = target.closest(".scene-form").find ".submit"
+      # post
       # submit_btn.click()
 
   $(document).on "click touch", ".duration", (event) ->
@@ -48,4 +50,46 @@ $ ->
     event.preventDefault()
 
   $(document).on "click touch", ".play-btn", (event) ->
-    #TODO
+    target = $(event.target)
+    class_name = "is-playing"
+    if target.hasClass class_name
+      target.removeClass class_name
+      clearTimeout timer for timer in timers
+    else
+      target.addClass class_name
+      post_positions 0
+
+post_positions = (i) ->
+  scenes = $(".scenes .scene")
+  scene = $ scenes[i]
+  post_url = scene.find(".scene-form").attr "action"
+  checked_duration = scene.find ".duration.checked"
+  duration = checked_duration.find(".val")[0].innerText
+
+  checked_positions = scene.find ".layer .checked .position"
+  val = []
+  append_value(val, c_p) for c_p in checked_positions
+
+  console.log "l_0:" + val[0] + ", l_1:" + val[1] + ", l_2:" + val[2] + ", l_3:" + val[3] + ", l_4:" + val[4]
+  # POST
+  # $.post post_url, {l_0: val[0], l_1: val[1], l_2: val[2], l_3: val[3], l_4: val[4] }
+  #   .done ->
+  #     console.log "post done"
+  #   .fail ->
+  #     console.log "post failed"
+  #     alert "post failed"
+  #     return false
+  #   .always ->
+  #     console.log "finished"
+
+  if(i > scenes.length - 2)
+    i = 0
+  else
+    i++
+  console.log duration * 33
+  timers.push setTimeout ->
+    post_positions(i)
+  , duration * 33
+
+append_value = (array, position) ->
+  array.push $(position).attr("value")

@@ -26,6 +26,7 @@
         .status {
           max-width: 200px;
           height: 560px;
+          margin-bottom: 20px;
         }
         .label {
           margin-left: 30px;
@@ -52,20 +53,36 @@
           }
         }
         .btn {
-          margin: 0 20px 0px;
-          padding: 30px 0;
+          margin: 0 5px 5px ;
+          padding: 30px 20px;
           padding-top: 12px;
-          border-radius: 10px;
+          background-position: center center;
+          &.btn_0 {
+            background-image: url("../images/icon_0.png");
+          }
+          &.btn_1 {
+            background-image: url("../images/icon_1.png");
+          }
+          &.btn_2 {
+            background-image: url("../images/icon_2.png");
+          }
+          &.btn_3 {
+            background-image: url("../images/icon_3.png");
+          }
+          &.btn_4 {
+            background-image: url("../images/icon_4.png");
+          }
           &.checked {
-            background: #2B88FF;
+            margin: -3px 2px 2px;
+            border: 3px solid red;
           }
           &:not(.checked){
-            margin: -1px 19px -1px;
-            border: 1px solid #2B88FF;
+            opacity: 0.6;
           }
           .position {
             display: none;
           }
+
         }
         .submit {
           display: none;
@@ -75,7 +92,7 @@
     .durations {
       margin-top: 40px !important;
       .duration {
-        margin: 0 20px 0px !important;
+        margin: 0 25px 0px !important;
         padding: 30px 0 !important;
         padding-top: 12px;
         width: 110px;
@@ -95,14 +112,14 @@
           }
         }
         &:not(.checked){
-          margin: -1px 19px -1px !important;
+          margin: -1px 24px -1px !important;
           border: 1px solid red;
         }
       }
     }
     .add-btn {
       margin-left: 270px;
-      padding: 30px 10px;
+      padding: 30px 35px;
       width: 720px;
       border-radius: 10px;
       text-align: center;

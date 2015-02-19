@@ -1,6 +1,8 @@
-var base_url;
+var append_value, base_url, post_positions, timers;
 
 base_url = "http://www.example.com/patterns/0/scenes/";
+
+timers = [];
 
 $(function() {
   $(document).on("click touch", ".btn", function(event) {
@@ -53,5 +55,50 @@ $(function() {
     alert(error.message);
     return event.preventDefault();
   });
-  return $(document).on("click touch", ".play-btn", function(event) {});
+  return $(document).on("click touch", ".play-btn", function(event) {
+    var class_name, target, timer, _i, _len, _results;
+    target = $(event.target);
+    class_name = "is-playing";
+    if (target.hasClass(class_name)) {
+      target.removeClass(class_name);
+      _results = [];
+      for (_i = 0, _len = timers.length; _i < _len; _i++) {
+        timer = timers[_i];
+        _results.push(clearTimeout(timer));
+      }
+      return _results;
+    } else {
+      target.addClass(class_name);
+      return post_positions(0);
+    }
+  });
 });
+
+post_positions = function(i) {
+  var c_p, checked_duration, checked_positions, duration, post_url, scene, scenes, val, _i, _len;
+  scenes = $(".scenes .scene");
+  scene = $(scenes[i]);
+  post_url = scene.find(".scene-form").attr("action");
+  checked_duration = scene.find(".duration.checked");
+  duration = checked_duration.find(".val")[0].innerText;
+  checked_positions = scene.find(".layer .checked .position");
+  val = [];
+  for (_i = 0, _len = checked_positions.length; _i < _len; _i++) {
+    c_p = checked_positions[_i];
+    append_value(val, c_p);
+  }
+  console.log("l_0:" + val[0] + ", l_1:" + val[1] + ", l_2:" + val[2] + ", l_3:" + val[3] + ", l_4:" + val[4]);
+  if (i > scenes.length - 2) {
+    i = 0;
+  } else {
+    i++;
+  }
+  console.log(duration * 33);
+  return timers.push(setTimeout(function() {
+    return post_positions(i);
+  }, duration * 33));
+};
+
+append_value = function(array, position) {
+  return array.push($(position).attr("value"));
+};

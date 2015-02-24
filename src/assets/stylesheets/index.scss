@@ -19,7 +19,7 @@
       width: 100%;
       .left {
         display: inline-block;
-        vertical-align: bottom;
+        vertical-align: top;
         margin-bottom: 0px;
         width: 250px;
         height: auto;
@@ -90,7 +90,7 @@
       }
     }
     .durations {
-      margin-top: 40px !important;
+      margin-bottom: 60px !important;
       .duration {
         margin: 0 25px 0px !important;
         padding: 30px 0 !important;
@@ -98,7 +98,7 @@
         width: 110px;
         height: 50px !important;
         border-radius: 10px;
-        .duration_radio {
+        .time {
           display: none;
         }
         .val {

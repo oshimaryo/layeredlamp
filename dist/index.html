@@ -12,11 +12,33 @@
       <h1 class="editor">Pattern Editor</h1>
       <ul class="scenes">
         <li class="scene">
-          <div class="left"><img src="assets/images/pattern.png" class="status">
-            <h1 class="label">duration</h1>
+          <div class="left">
+            <h1 class="label">duration</h1><img src="assets/images/pattern.png" class="status">
           </div>
           <div class="right">
             <form action="http://www.example.com/patterns/0/scenes/0/" method="post" class="scene-form">
+              <ul class="durations">
+                <li class="duration checked">
+                  <input type="radio" name="duration" value="0" checked class="time">
+                  <p class="val">30</p>
+                </li>
+                <li class="duration">
+                  <input type="radio" name="duration" value="1" class="time">
+                  <p class="val">50</p>
+                </li>
+                <li class="duration">
+                  <input type="radio" name="duration" value="2" class="time">
+                  <p class="val">70</p>
+                </li>
+                <li class="duration">
+                  <input type="radio" name="duration" value="3" class="time">
+                  <p class="val">90</p>
+                </li>
+                <li class="duration">
+                  <input type="radio" name="duration" value="4" class="time">
+                  <p class="val">110</p>
+                </li>
+              </ul>
               <ul class="layer layer-0">
                 <li class="btn btn_0 checked">
                   <input type="radio" name="l_0" value="0" checked class="position">
@@ -104,34 +126,39 @@
               </ul>
               <input type="submit" class="submit">
             </form>
-            <ul class="durations durations_0">
-              <li class="duration checked">
-                <p class="val">30</p>
-              </li>
-              <li class="duration">
-                <p class="val">50</p>
-              </li>
-              <li class="duration">
-                <p class="val">70</p>
-              </li>
-              <li class="duration">
-                <p class="val">90</p>
-              </li>
-              <li class="duration">
-                <p class="val">110</p>
-              </li>
-            </ul>
           </div>
         </li>
       </ul>
       <div class="add-btn">add scene</div>
       <div class="play-btn"></div>
       <div class="template">
-        <div class="scene">
-          <div class="left"><img src="assets/images/pattern.png" class="status">
-            <h1 class="label">duration</h1>
+        <li class="scene">
+          <div class="left">
+            <h1 class="label">duration</h1><img src="assets/images/pattern.png" class="status">
           </div>
           <div class="right">
+            <ul class="durations">
+              <li class="duration checked">
+                <input type="radio" name="duration" value="0" checked class="time">
+                <p class="val">30</p>
+              </li>
+              <li class="duration">
+                <input type="radio" name="duration" value="1" class="time">
+                <p class="val">50</p>
+              </li>
+              <li class="duration">
+                <input type="radio" name="duration" value="2" class="time">
+                <p class="val">70</p>
+              </li>
+              <li class="duration">
+                <input type="radio" name="duration" value="3" class="time">
+                <p class="val">90</p>
+              </li>
+              <li class="duration">
+                <input type="radio" name="duration" value="4" class="time">
+                <p class="val">110</p>
+              </li>
+            </ul>
             <form action="http://www.example.com/patterns/0/scenes/" method="post">
               <ul class="layer layer-0">
                 <li class="btn btn_0 checked">
@@ -220,25 +247,8 @@
               </ul>
               <input type="submit" class="submit">
             </form>
-            <ul class="durations">
-              <li class="duration checked">
-                <p class="val">30</p>
-              </li>
-              <li class="duration">
-                <p class="val">50</p>
-              </li>
-              <li class="duration">
-                <p class="val">70</p>
-              </li>
-              <li class="duration">
-                <p class="val">90</p>
-              </li>
-              <li class="duration">
-                <p class="val">110</p>
-              </li>
-            </ul>
           </div>
-        </div>
+        </li>
       </div>
     </div>
   </body>

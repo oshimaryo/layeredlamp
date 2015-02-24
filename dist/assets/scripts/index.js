@@ -29,15 +29,25 @@ $(function() {
     }
   });
   $(document).on("click touch", ".duration", function(event) {
-    var current_durations, previous_column, target;
+    var current_durations, name, previous_column, previous_time, radio, selector, target, target_radio, value;
     target = $(this);
     if (target.hasClass("checked")) {
       return console.log("already");
     } else {
       previous_column = target.siblings(".checked");
       previous_column.removeClass("checked");
+      previous_time = previous_column.find(".time");
+      previous_time.removeAttr("checked");
       target.addClass("checked");
+      radio = target.find(".time");
+      name = radio.attr("name");
+      value = radio.attr("value");
+      selector = ".time[name='" + name + "']";
+      console.log(selector);
       current_durations = target.closest(".durations");
+      current_durations.find(selector).val([value]);
+      target_radio = current_durations.find(selector)[value];
+      $(target_radio).attr("checked", "checked");
       return event.preventDefault();
     }
   });
@@ -80,14 +90,14 @@ post_positions = function(i) {
   scene = $(scenes[i]);
   post_url = scene.find(".scene-form").attr("action");
   checked_duration = scene.find(".duration.checked");
-  duration = checked_duration.find(".val")[0].innerText;
+  duration = checked_duration.find(".val")[0].innerHTML;
   checked_positions = scene.find(".layer .checked .position");
-  val = [];
+  val = [duration * 1];
   for (_i = 0, _len = checked_positions.length; _i < _len; _i++) {
     c_p = checked_positions[_i];
     append_value(val, c_p);
   }
-  console.log("l_0:" + val[0] + ", l_1:" + val[1] + ", l_2:" + val[2] + ", l_3:" + val[3] + ", l_4:" + val[4]);
+  console.log("duration:" + val[0] + ", l_0:" + val[1] + ", l_1:" + val[2] + ", l_2:" + val[3] + ", l_3:" + val[4] + ", l_4:" + val[5]);
   if (i > scenes.length - 2) {
     i = 0;
   } else {

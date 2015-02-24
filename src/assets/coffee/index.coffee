@@ -4,15 +4,17 @@ json_data = []
 # data/data.json以下の servoのparameter設定のための定数
 # layer毎に下のほうから 5つ
 # 0,1,2,3,4 の 5種類
-servo_ids = [0, 0, 0, 1, 1]
+servo_ids = [0, 0, 0, 1, 2]
 #サーボが遅れた時用のdeplay定数
 YOSHINA = 500
+BASE_URL = "/transform?data="
 
 $.getJSON "data/data.json", (data) ->
   json_data.push datum for datum in data
   # console.log json_data[0].positions[1][0]
 
 $ ->
+  init BASE_URL
 
   $(document).on "click touch", ".btn", (event) ->
     target = $(this)
@@ -48,9 +50,8 @@ $ ->
       append_value(val, c_p) for c_p in checked_positions
 
       # console.log "duration:" + val[0] + ", l_0:" + val[1] + ", l_1:" + val[2] + ", l_2:" + val[3] + ", l_3:" + val[4] + ", l_4:" + val[5]
-      post_url = make_url("/transform?data=", val)
+      post_url = make_url(BASE_URL, val)
       $.post post_url
-
 
   $(document).on "click touch", ".duration", (event) ->
     target = $(this)
@@ -120,7 +121,7 @@ post_positions = (i) ->
   append_value(val, c_p) for c_p in checked_positions
 
   # console.log "duration:" + val[0] + ", l_0:" + val[1] + ", l_1:" + val[2] + ", l_2:" + val[3] + ", l_3:" + val[4] + ", l_4:" + val[5]
-  post_url = make_url("/transform?data=", val)
+  post_url = make_url(BASE_URL, val)
   $.post post_url
 
   # POST
@@ -158,5 +159,25 @@ make_url = (base_url, vals)->
   return url
 
 calc_id = (servo_index, val, servo_number) ->
-  console.log (json_data[servo_ids[servo_index]].positions[val][servo_number] / 10) + ""
-  return (json_data[servo_ids[servo_index]].positions[val][servo_number] / 10) + ""
+  console.log json_data[servo_ids[servo_index]].positions[val][servo_number] + ""
+  return json_data[servo_ids[servo_index]].positions[val][servo_number] + ""
+
+
+init = (base_url) ->
+  post_url = make_init_url base_url
+  $.post post_url
+
+make_init_url = (base_url) ->
+  url = base_url + "9:"
+  url_0 = "0-0a" + init_params(0) + "," + "0-1a" + init_params(0) + "," + "0-2a" + init_params(0) + ","
+  url_1 = "1-0a" + init_params(1) + "," + "1-1a" + init_params(1) + "," + "1-2a" + init_params(1) + ","
+  url_2 = "2-0a" + init_params(2) + "," + "2-1a" + init_params(2) + "," + "2-2a" + init_params(2) + ","
+  url_3 = "3-0a" + init_params(3) + "," + "3-1a" + init_params(3) + "," + "3-2a" + init_params(3) + ","
+  url_4 = "4-0a" + init_params(4) + "," + "4-1a" + init_params(4) + "," + "4-2a" + init_params(4)
+  url = url + url_0 + url_1 + url_2 + url_3 + url_4
+  console.log url
+  return url
+
+init_params = (servo_index) ->
+  text = json_data[servo_index].initial_params[0] + "b" + json_data[servo_index].initial_params[1]
+  return text

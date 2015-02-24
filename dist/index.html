@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="utf-8"><meta name="viewport" content="width=1280px" />
+    <meta charset="utf-8"><meta name="viewport" content="width=1200px" />
     <link rel="stylesheet" href="assets/stylesheets/index.css">
     <script src="assets/scripts/all.min.js"></script>
     <script src="assets/scripts/index.js"></script>
@@ -14,6 +14,7 @@
         <li class="scene">
           <div class="left">
             <h1 class="label">duration</h1><img src="assets/images/pattern.png" class="status">
+            <h1 class="label_2">wait</h1>
           </div>
           <div class="right">
             <form action="http://www.example.com/patterns/0/scenes/0/" method="post" class="scene-form">
@@ -126,6 +127,23 @@
               </ul>
               <input type="submit" class="submit">
             </form>
+            <ul class="waits">
+              <li class="wait checked">
+                <p class="val">0</p>
+              </li>
+              <li class="wait">
+                <p class="val">500</p>
+              </li>
+              <li class="wait">
+                <p class="val">1000</p>
+              </li>
+              <li class="wait">
+                <p class="val">1500</p>
+              </li>
+              <li class="wait">
+                <p class="val">2000</p>
+              </li>
+            </ul>
           </div>
         </li>
       </ul>
@@ -135,31 +153,32 @@
         <li class="scene">
           <div class="left">
             <h1 class="label">duration</h1><img src="assets/images/pattern.png" class="status">
+            <h1 class="label">wait</h1>
           </div>
           <div class="right">
-            <ul class="durations">
-              <li class="duration checked">
-                <input type="radio" name="duration" value="0" checked class="time">
-                <p class="val">30</p>
-              </li>
-              <li class="duration">
-                <input type="radio" name="duration" value="1" class="time">
-                <p class="val">50</p>
-              </li>
-              <li class="duration">
-                <input type="radio" name="duration" value="2" class="time">
-                <p class="val">70</p>
-              </li>
-              <li class="duration">
-                <input type="radio" name="duration" value="3" class="time">
-                <p class="val">90</p>
-              </li>
-              <li class="duration">
-                <input type="radio" name="duration" value="4" class="time">
-                <p class="val">110</p>
-              </li>
-            </ul>
             <form action="http://www.example.com/patterns/0/scenes/" method="post">
+              <ul class="durations">
+                <li class="duration checked">
+                  <input type="radio" name="duration" value="0" checked class="time">
+                  <p class="val">30</p>
+                </li>
+                <li class="duration">
+                  <input type="radio" name="duration" value="1" class="time">
+                  <p class="val">50</p>
+                </li>
+                <li class="duration">
+                  <input type="radio" name="duration" value="2" class="time">
+                  <p class="val">70</p>
+                </li>
+                <li class="duration">
+                  <input type="radio" name="duration" value="3" class="time">
+                  <p class="val">90</p>
+                </li>
+                <li class="duration">
+                  <input type="radio" name="duration" value="4" class="time">
+                  <p class="val">110</p>
+                </li>
+              </ul>
               <ul class="layer layer-0">
                 <li class="btn btn_0 checked">
                   <input type="radio" name="position_0" value="0" checked class="position">
@@ -247,6 +266,23 @@
               </ul>
               <input type="submit" class="submit">
             </form>
+            <ul class="waits">
+              <li class="wait checked">
+                <p class="val">0</p>
+              </li>
+              <li class="wait">
+                <p class="val">500</p>
+              </li>
+              <li class="wait">
+                <p class="val">1000</p>
+              </li>
+              <li class="wait">
+                <p class="val">1500</p>
+              </li>
+              <li class="wait">
+                <p class="val">2000</p>
+              </li>
+            </ul>
           </div>
         </li>
       </div>

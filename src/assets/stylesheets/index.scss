@@ -31,6 +31,11 @@
         .label {
           margin-left: 30px;
         }
+        .label_2 {
+          padding: 0;
+          margin: 0;
+          margin-left: 50px;
+        }
       }
       .right {
         display: inline-block;
@@ -90,7 +95,7 @@
       }
     }
     .durations {
-      margin-bottom: 60px !important;
+      margin-bottom: 40px !important;
       .duration {
         margin: 0 25px 0px !important;
         padding: 30px 0 !important;
@@ -114,6 +119,31 @@
         &:not(.checked){
           margin: -1px 24px -1px !important;
           border: 1px solid red;
+        }
+      }
+    }
+    .waits {
+      margin-top: 20px !important;
+      .wait {
+        margin: 0 25px 0px !important;
+        padding: 30px 0 !important;
+        padding-top: 12px;
+        width: 110px;
+        height: 50px !important;
+        border-radius: 10px;
+        .val {
+          margin-top: 0;
+          font-size: 40px;
+        }
+        &.checked {
+          background: blue;
+          .val {
+            color: white;
+          }
+        }
+        &:not(.checked){
+          margin: -1px 24px -1px !important;
+          border: 1px solid blue;
         }
       }
     }

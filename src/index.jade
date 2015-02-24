@@ -2,7 +2,7 @@ doctype html
 html(lang="ja")
   head
     meta(charset="utf-8")
-    <meta name="viewport" content="width=1280px" />
+    <meta name="viewport" content="width=1200px" />
     link(rel='stylesheet', href="assets/stylesheets/index.css")
     script(src='assets/scripts/all.min.js')
     script(src='assets/scripts/index.js')
@@ -23,6 +23,7 @@ html(lang="ja")
             h1.label duration
             //- TODO: change form interactively
             img.status(src="assets/images/pattern.png")/
+            h1.label_2 wait
           .right
             - url = "http://www.example.com/patterns/0/scenes/0/"
             form(action="#{url}", method="post", class="scene-form")
@@ -47,6 +48,15 @@ html(lang="ja")
                       li(class="btn btn_#{j}")
                         input(type="radio", name="l_#{i}", value="#{j}" class="position")
               input(type="submit" class="submit")
+            ul.waits
+              - for(var i=0; i<5; i++)
+                - if(i==0)
+                  li.wait.checked
+                    p.val 0
+                - else
+                  li.wait
+                    - val = i * 500
+                    p.val #{val}
                     
       .add-btn add scene
       .play-btn 
@@ -57,20 +67,22 @@ html(lang="ja")
             h1.label duration
             //- TODO: change form interactively
             img.status(src="assets/images/pattern.png")/
+            h1.label wait
           .right
-            ul.durations
-              - for(var i=0; i<5; i++)
-                - if(i==0)
-                  li.duration.checked
-                    input(type="radio", name="duration", value="#{i}" class="time" checked)
-                    p.val 30
-                - else
-                  li.duration
-                    input(type="radio", name="duration", value="#{i}" class="time")
-                    - val = 30 + i * 20 
-                    p.val #{val}
             - url = "http://www.example.com/patterns/0/scenes/"
             form(action="#{url}", method="post")
+              ul.durations
+                - for(var i=0; i<5; i++)
+                  - if(i==0)
+                    li.duration.checked
+                      input(type="radio", name="duration", value="#{i}" class="time" checked)
+                      p.val 30
+                  - else
+                    li.duration
+                      input(type="radio", name="duration", value="#{i}" class="time")
+                      - val = 30 + i * 20
+                      p.val #{val}
+
               - for(var i=0; i<5; i++)
                 ul(class="layer layer-#{i}")
                   - for(var j=0; j<5; j++)
@@ -81,3 +93,12 @@ html(lang="ja")
                       li(class="btn btn_#{j}")
                         input(type="radio", name="position_#{i}", value="#{j}" class="position")
               input(type="submit" class="submit")
+            ul.waits
+              - for(var i=0; i<5; i++)
+                - if(i==0)
+                  li.wait.checked
+                    p.val 0
+                - else
+                  li.wait
+                    - val = i * 500
+                    p.val #{val}

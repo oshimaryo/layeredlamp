@@ -46,6 +46,16 @@ $ ->
       $(target_radio).attr "checked", "checked"
       event.preventDefault()
 
+  $(document).on "click touch", ".wait", (event) ->
+    target = $(this)
+    if(target.hasClass "checked")
+      console.log "already"
+    else
+      previous_column = target.siblings ".checked"
+      previous_column.removeClass "checked"
+      target.addClass "checked"
+      event.preventDefault()
+
   $(document).on "click touch", ".add-btn", (event) ->
     scene_template = $(".template").find ".scene"
     new_scene = scene_template.clone()
@@ -75,6 +85,9 @@ post_positions = (i) ->
   post_url = scene.find(".scene-form").attr "action"
   checked_duration = scene.find ".duration.checked"
   duration = checked_duration.find(".val")[0].innerHTML
+  checked_wait = scene.find ".wait.checked"
+  wait = checked_wait.find(".val")[0].innerHTML
+  millisec_per_frame = 10
 
   checked_positions = scene.find ".layer .checked .position"
   val = [duration * 1]
@@ -96,10 +109,10 @@ post_positions = (i) ->
     i = 0
   else
     i++
-  console.log duration * 33
+  console.log (wait * 1 + duration * millisec_per_frame)
   timers.push setTimeout ->
     post_positions(i)
-  , duration * 33
+  , (wait * 1 + duration * millisec_per_frame)
 
 append_value = (array, position) ->
   array.push $(position).attr("value")

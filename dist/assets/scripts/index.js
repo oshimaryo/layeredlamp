@@ -51,6 +51,18 @@ $(function() {
       return event.preventDefault();
     }
   });
+  $(document).on("click touch", ".wait", function(event) {
+    var previous_column, target;
+    target = $(this);
+    if (target.hasClass("checked")) {
+      return console.log("already");
+    } else {
+      previous_column = target.siblings(".checked");
+      previous_column.removeClass("checked");
+      target.addClass("checked");
+      return event.preventDefault();
+    }
+  });
   $(document).on("click touch", ".add-btn", function(event) {
     var new_form, new_scene, new_url, scene_template, scenes_length;
     scene_template = $(".template").find(".scene");
@@ -85,12 +97,15 @@ $(function() {
 });
 
 post_positions = function(i) {
-  var c_p, checked_duration, checked_positions, duration, post_url, scene, scenes, val, _i, _len;
+  var c_p, checked_duration, checked_positions, checked_wait, duration, millisec_per_frame, post_url, scene, scenes, val, wait, _i, _len;
   scenes = $(".scenes .scene");
   scene = $(scenes[i]);
   post_url = scene.find(".scene-form").attr("action");
   checked_duration = scene.find(".duration.checked");
   duration = checked_duration.find(".val")[0].innerHTML;
+  checked_wait = scene.find(".wait.checked");
+  wait = checked_wait.find(".val")[0].innerHTML;
+  millisec_per_frame = 10;
   checked_positions = scene.find(".layer .checked .position");
   val = [duration * 1];
   for (_i = 0, _len = checked_positions.length; _i < _len; _i++) {
@@ -103,10 +118,10 @@ post_positions = function(i) {
   } else {
     i++;
   }
-  console.log(duration * 33);
+  console.log(wait * 1 + duration * millisec_per_frame);
   return timers.push(setTimeout(function() {
     return post_positions(i);
-  }, duration * 33));
+  }, wait * 1 + duration * millisec_per_frame));
 };
 
 append_value = function(array, position) {

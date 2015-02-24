@@ -1,12 +1,28 @@
-var append_value, base_url, post_positions, timers;
+var YOSHINA, append_value, base_url, calc_id, json_data, make_url, post_positions, servo_ids, timers;
 
 base_url = "http://www.example.com/patterns/0/scenes/";
 
 timers = [];
 
+json_data = [];
+
+servo_ids = [0, 0, 0, 1, 1];
+
+YOSHINA = 500;
+
+$.getJSON("data/data.json", function(data) {
+  var datum, _i, _len, _results;
+  _results = [];
+  for (_i = 0, _len = data.length; _i < _len; _i++) {
+    datum = data[_i];
+    _results.push(json_data.push(datum));
+  }
+  return _results;
+});
+
 $(function() {
   $(document).on("click touch", ".btn", function(event) {
-    var current_layer, name, previous_column, previous_position, radio, selector, submit_btn, target, target_radio, value;
+    var c_p, checked_duration, checked_positions, checked_wait, current_layer, duration, name, post_url, previous_column, previous_position, radio, scene, selector, target, target_radio, val, value, wait, _i, _len;
     target = $(this);
     if (target.hasClass("checked")) {
       return console.log("already");
@@ -25,7 +41,19 @@ $(function() {
       target_radio = current_layer.find(selector)[value];
       $(target_radio).attr("checked", "checked");
       event.preventDefault();
-      return submit_btn = target.closest(".scene-form").find(".submit");
+      scene = target.closest(".scene");
+      checked_duration = scene.find(".duration.checked");
+      duration = checked_duration.find(".val")[0].innerHTML;
+      checked_wait = scene.find(".wait.checked");
+      wait = checked_wait.find(".val")[0].innerHTML;
+      checked_positions = scene.find(".layer .checked .position");
+      val = [duration / 200 - 1];
+      for (_i = 0, _len = checked_positions.length; _i < _len; _i++) {
+        c_p = checked_positions[_i];
+        append_value(val, c_p);
+      }
+      post_url = make_url("/transform?data=", val);
+      return $.post(post_url);
     }
   });
   $(document).on("click touch", ".duration", function(event) {
@@ -97,33 +125,50 @@ $(function() {
 });
 
 post_positions = function(i) {
-  var c_p, checked_duration, checked_positions, checked_wait, duration, millisec_per_frame, post_url, scene, scenes, val, wait, _i, _len;
+  var c_p, checked_duration, checked_positions, checked_wait, duration, post_url, scene, scenes, val, wait, _i, _len;
   scenes = $(".scenes .scene");
   scene = $(scenes[i]);
-  post_url = scene.find(".scene-form").attr("action");
   checked_duration = scene.find(".duration.checked");
   duration = checked_duration.find(".val")[0].innerHTML;
   checked_wait = scene.find(".wait.checked");
   wait = checked_wait.find(".val")[0].innerHTML;
-  millisec_per_frame = 10;
   checked_positions = scene.find(".layer .checked .position");
-  val = [duration * 1];
+  val = [duration / 200 - 1];
   for (_i = 0, _len = checked_positions.length; _i < _len; _i++) {
     c_p = checked_positions[_i];
     append_value(val, c_p);
   }
-  console.log("duration:" + val[0] + ", l_0:" + val[1] + ", l_1:" + val[2] + ", l_2:" + val[3] + ", l_3:" + val[4] + ", l_4:" + val[5]);
+  post_url = make_url("/transform?data=", val);
+  $.post(post_url);
   if (i > scenes.length - 2) {
     i = 0;
   } else {
     i++;
   }
-  console.log(wait * 1 + duration * millisec_per_frame);
+  console.log(wait * 1 + duration * 1 + YOSHINA);
   return timers.push(setTimeout(function() {
     return post_positions(i);
-  }, wait * 1 + duration * millisec_per_frame));
+  }, wait * 1 + duration * 1 + YOSHINA));
 };
 
 append_value = function(array, position) {
   return array.push($(position).attr("value"));
+};
+
+make_url = function(base_url, vals) {
+  var url, url_0, url_1, url_2, url_3, url_4;
+  url = base_url + vals[0] + ":";
+  url_0 = "0-0a" + calc_id(0, vals[1], 0) + "," + "0-1a" + calc_id(0, vals[1], 1) + "," + "0-2a" + calc_id(0, vals[1], 2) + ",";
+  url_1 = "1-0a" + calc_id(1, vals[2], 0) + "," + "1-1a" + calc_id(1, vals[2], 1) + "," + "1-2a" + calc_id(1, vals[2], 2) + ",";
+  url_2 = "2-0a" + calc_id(2, vals[3], 0) + "," + "2-1a" + calc_id(2, vals[3], 1) + "," + "2-2a" + calc_id(2, vals[3], 2) + ",";
+  url_3 = "3-0a" + calc_id(3, vals[4], 0) + "," + "3-1a" + calc_id(3, vals[4], 1) + "," + "3-2a" + calc_id(3, vals[4], 2) + ",";
+  url_4 = "4-0a" + calc_id(4, vals[5], 0) + "," + "4-1a" + calc_id(4, vals[5], 1) + "," + "4-2a" + calc_id(4, vals[5], 2);
+  url = url + url_0 + url_1 + url_2 + url_3 + url_4;
+  console.log(url);
+  return url;
+};
+
+calc_id = function(servo_index, val, servo_number) {
+  console.log((json_data[servo_ids[servo_index]].positions[val][servo_number] / 10) + "");
+  return (json_data[servo_ids[servo_index]].positions[val][servo_number] / 10) + "";
 };

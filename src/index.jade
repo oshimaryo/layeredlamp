@@ -32,11 +32,11 @@ html(lang="ja")
                   - if(i==0)
                     li.duration.checked
                       input(type="radio", name="duration", value="#{i}" class="time" checked)
-                      p.val 30
+                      p.val 200
                   - else
                     li.duration
                       input(type="radio", name="duration", value="#{i}" class="time")
-                      - val = 30 + i * 20
+                      - val = 200 * (i + 1)
                       p.val #{val}
               - for(var i=0; i<5; i++)
                 ul(class="layer layer-#{i}")
@@ -76,11 +76,11 @@ html(lang="ja")
                   - if(i==0)
                     li.duration.checked
                       input(type="radio", name="duration", value="#{i}" class="time" checked)
-                      p.val 30
+                      p.val 200
                   - else
                     li.duration
                       input(type="radio", name="duration", value="#{i}" class="time")
-                      - val = 30 + i * 20
+                      - val = 200 * (i + 1)
                       p.val #{val}
 
               - for(var i=0; i<5; i++)
